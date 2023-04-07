@@ -29,9 +29,18 @@ app.use(cors());
 
 //Config
 //Tamplate
-    app.engine('handlebars', handlebars.engine({defaultLayout: "main"}))
-    app.set("view engine", 'handlebars')
+    /* app.engine('handlebars', handlebars.engine({defaultLayout: "main"}))
+    app.set("view engine", 'handlebars') */
 
+    //NOVA CONFIGURÇÃO
+        app.use(express.static(__dirname + '../../' + '/public'));
+
+        app.engine("handlebars", handlebars.engine({
+            defaultLayout: "main",
+            layoutsDir: path.join(__dirname, "views", "layouts")
+        }));
+        app.set("view engine", "handlebars");
+        app.set("views", path.join(__dirname, "views"))
     //Conectar BD
    // connectDB()
 
@@ -40,8 +49,9 @@ import bodyParser from 'body-parser'
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
+
 //Diretorio de css e Js
-app.use(express.static(path.join("public")))
+//app.use(express.static(path.join("public")))
 //app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/listar', (req, res) =>{
