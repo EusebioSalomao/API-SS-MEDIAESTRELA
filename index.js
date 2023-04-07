@@ -50,6 +50,9 @@ app.get('/listar', (req, res) =>{
 app.get('/', (req, res) =>{
     res.render('admin/teste')
 })
+app.get('/teste', (req, res) =>{
+    res.render('Rota de Teste!')
+})
 
 app.use("/user", userRoute)
 app.use('/auth', authRouter)
