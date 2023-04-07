@@ -48,7 +48,7 @@ app.get('/listar', (req, res) =>{
     res.send({"membros": membros})
 })
 app.get('/', (req, res) =>{
-    res.send('Ola!')
+    res.render('admin/teste')
 })
 
 app.use("/user", userRoute)
