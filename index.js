@@ -47,6 +47,9 @@ app.use(express.static(path.join("public")))
 app.get('/listar', (req, res) =>{
     res.send({"membros": membros})
 })
+app.get('/', (req, res) =>{
+    res.send('Ola!')
+})
 
 app.use("/user", userRoute)
 app.use('/auth', authRouter)
