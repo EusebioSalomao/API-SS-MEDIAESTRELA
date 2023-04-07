@@ -48,7 +48,7 @@ app.use(cors());
         app.set("view engine", "handlebars");
         app.set("views", path.join(__dirname, "views"))
     //Conectar BD
-   // connectDB()
+    connectDB()
 
 //Body Parser
 import bodyParser from 'body-parser'
