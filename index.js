@@ -39,7 +39,7 @@ app.use(cors());
     app.set("view engine", 'handlebars') */
 
     //NOVA CONFIGURÇÃO
-        app.use(express.static(__dirname + '../../' + '/public'));
+        app.use(express.static(__dirname + '/public'));
 
         app.engine("handlebars", handlebars.engine({
             defaultLayout: "main",
@@ -48,7 +48,7 @@ app.use(cors());
         app.set("view engine", "handlebars");
         app.set("views", path.join(__dirname, "views"))
     //Conectar BD
-    connectDB()
+    //connectDB()
 
 //Body Parser
 import bodyParser from 'body-parser'
