@@ -5,7 +5,7 @@ export const homeFinancas = async (req, res) =>{
     try {
         const quotas = await findAllQuotasService()
         
-        res.send({quotas})
+        res.render("admin/quotas", {quotas})
 
     } catch (error) {
         res.status(500).send({message: error.message})

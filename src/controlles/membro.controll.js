@@ -5,7 +5,7 @@ export const membros = async (req, res) => {
     try {
         const membros = await findAllMembrosService()
 
-        res.send( {membros})
+        res.render("admin/membros", {membros})
     } catch (error) {
         res.status(500).send({message: error.message})
     }
