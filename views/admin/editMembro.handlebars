@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-8">
+        <h2>Editar dados do membro</h2>
+    </div>
+    <div class="col-4 p-3 text-danger">CLICA NO CAMPO QUE QUER EDITTAR</div>
+</div>
+<hr>
+<div class="card">
+    <div class="card-body">
+        <form action="/membros/editMembro" method="POST">
+            <label for="nome">Nome completo:</label>
+            <input type="text" name="nome" class="form-control" value="{{membro.nome}}" required>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <label for="dataNascimento">Data de nascimento:</label>
+                        <input type="date" name="dataNascimento" class="form-control">
+                        <label for="bi">Nº BI</label>
+                        <input type="text" name="bi" class="form-control" value="{{membro.bi}}">
+                        <label for="opMembro">Classe Membro</label>
+                        <select name="opMembro" class="form-control">
+                            <option value="0">Selecioar</option>
+                            <option value="catecumeno">Membro catecumeno</option>
+                            <option value="MP">Membro em plena Comunhão</option>
+                            <option value="ouvinte">Membro ouvinte</option>
+                        </select>
+                        <label for="estadoCivil">Estado Civil</label>
+                        <select name="estadoCivil" class="form-control">
+                            <option value="0">Selecioar</option>
+                            <option value="solteiro">Solteiro</option>
+                            <option value="casado">Casado/a</option>
+                        </select>
+                        <label for="filiacao">Filiação:</label><br>
+                        <input type="text" name="filiacao" class="form-control" value="{{membro.filiacao}}">
+                    </div>
+                    <div class="col">
+                        <label for="telefone">Nº Telefone:</label>
+                        <input type="text" name="telefone" value="{{membro.telefone}}" class="form-control">
+                        <label for="bairro">Bairro:</label>
+                        <input type="text" name="bairro" value="{{membro.bairro}}" class="form-control">
+                        <label for="funcao">Função no coral:</label>
+                        <select name="funcao" class="form-control">
+                            <option value="0">Selecioar</option>
+                            <option value="corista">Corista</option>
+                            <option value="ncorista">Não corista</option>
+                        </select>
+                        <label for="dataIngresso">Data de ingresso:</label>
+                        <input type="date" name="dataIngresso" class="form-control">
+                        <label for="proficao">Profissão:</label>
+                        <input type="text" name="proficao" value="{{membro.proficao}}" class="form-control">
+                        <input type="hidden" name="id">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5"><a href="/membros" class="btn btn-danger form-control mt-2 ">Cancelar</a></div>
+                <div class="col-2"></div>
+                <div class="col-5"><button type="submit" class="btn btn-primary form-control mt-2 ">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

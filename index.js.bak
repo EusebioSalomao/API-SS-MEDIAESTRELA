@@ -1,0 +1,40 @@
+import express from "express"
+import handlebars from  'express-handlebars'
+import path from 'path'
+import userRoute from  "./src/routes/user.route.js"
+const port = 8081
+import connectDB from  "./src/databases/db.js"
+import authRouter from  './src/routes/auth.router.js'
+import {inicio} from './src/controlles/auth.controll.js'
+import membroRouter from  './src/routes/membro.router.js'
+import ofertasRouter from  './src/routes/ofertas.router.js'
+import financasRouter from  './src/routes/financa.router.js'
+
+const app = express()
+
+
+//Config
+//Tamplate
+    app.engine('handlebars', handlebars.engine({defaultLayout: "main"}))
+    app.set("view engine", 'handlebars')
+
+    //Conectar BD
+    //connectDB()
+
+//Body Parser
+import bodyParser from 'body-parser'
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+
+//Diretorio de css e Js
+app.use(express.static(path.join("public")))
+
+
+app.use("/user", userRoute)
+app.use('/auth', authRouter)
+app.get('/inicio', inicio)
+app.use('/membros', membroRouter)
+app.use('/ofertas', ofertasRouter)
+app.use('/financas', financasRouter)
+
+app.listen(port, () => console.log("Servidor SS.MEDIA rodando..."))

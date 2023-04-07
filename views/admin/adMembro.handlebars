@@ -1,0 +1,54 @@
+<h2>Adicionar novo membro</h2>
+<hr>
+<div class="card bg-light">
+    <div class="card-body">
+        <form action="/membros/adMembro" method="POST">
+            <label for="nome">Nome completo:</label>
+            <input type="text" name="nome" class="form-control" required>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <label for="dataNascimento">Data de nascimento:</label>
+                        <input type="date" name="dataNascimento" class="form-control">
+                        <label for="bi">Nº BI</label>
+                        <input type="text" name="bi" class="form-control">
+                        <label for="opMembro">Classe Membro</label>
+                        <select name="opMembro" required class="form-control">
+                            <option value="0">Selecioar</option>
+                            <option value="Catecumeno">Membro catecumeno</option>
+                            <option value="Membro em Plena comunhão">Membro em plena Comunhão</option>
+                            <option value="Ouvinte">Membro ouvinte</option>
+                        </select>
+                        <label for="estadoCivil">Estado Civil</label>
+                        <select name="estadoCivil" class="form-control">
+                            <option value="0">Selecioar</option>
+                            <option value="Solteiro">Solteiro</option>
+                            <option value="Casado">Casado/a</option>
+                        </select>
+                        <label for="filiacao">Filiação:</label><br>
+                        <input type="text" name="pai" class="form-control" placeholder="Nome do pai">
+                        <input type="text" name="mae" class="form-control" placeholder="Nome da mãe">
+                    </div>
+                    <div class="col">
+                        <label for="telefone">Nº Telefone:</label>
+                        <input type="text" name="telefone" class="form-control">
+                        <label for="bairro">Bairro:</label>
+                        <input type="text" name="bairro" required class="form-control">
+                        <label for="funcao">Função no coral:</label>
+                        <select name="funcao" class="form-control">
+                            <option value="0">Selecioar</option>
+                            <option value="corista">Corista</option>
+                            <option value="ncorista">Não corista</option>
+                        </select>
+                        <label for="dataIngresso">Data de ingresso:</label>
+                        <input type="date" name="dataIngresso" class="form-control">
+                        <label for="proficao">Profissão:</label>
+                        <input type="text" name="proficao" class="form-control">
+                    </div>
+                </div>
+            </div>
+                    <button type="submit" class="btn btn-primary form-control mt-2 " >Cadastrar</button>
+        </form>
+    </div>
+</div>
