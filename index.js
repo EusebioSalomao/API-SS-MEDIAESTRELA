@@ -6,6 +6,12 @@ import cors from 'cors'
 
 import handlebars from  'express-handlebars'
 import path from 'path'
+import {fileURLToPath} from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+
+// 👇️ "/home/john/Desktop/javascript"
+const __dirname = path.dirname(__filename);
 import userRoute from  "./src/routes/user.route.js"
 const port = 8081
 import connectDB from  "./src/databases/db.js"
