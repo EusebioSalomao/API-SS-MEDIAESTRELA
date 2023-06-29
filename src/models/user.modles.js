@@ -1,18 +1,11 @@
 import mongoose from "mongoose"
+import bcrypt from 'bcryptjs'
 const Schema = mongoose.Schema;
 
 const Usuario = new Schema({
-    nome: {
-        type: String,
-        required:true
-    },
-    usernome: {
+    username: {
         type: String,
         required: true
-    },
-    email: {
-        type: String,
-        unique: true
     },
     senha: {
         type: String,
@@ -20,13 +13,18 @@ const Usuario = new Schema({
     },
     imagem: {
         type: String,
-        required: true
+        default: 'Imagem'
     },
-    background: {
-        type: String,
-        required: true
+    eAdmin: {
+        type: Number,
+        default: 1
     }
 })
 
-const usuario  = mongoose.model("usuarios", Usuario)
+Usuario.pre('save', async function (next){
+    this.senha = await bcrypt.hash(this.senha, 10)
+    next();
+})
+
+const usuario  = mongoose.model("users", Usuario)
 export default usuario

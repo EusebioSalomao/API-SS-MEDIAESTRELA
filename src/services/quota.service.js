@@ -1,6 +1,6 @@
 import Quota from '../models/Quotas.js'
 
-export const findAllQuotasService = () => Quota.find().populate('nomeMembro').lean()
+export const findAllQuotasService = () => Quota.find().sort().populate('nomeMembro').lean()
 
 export const saveQuotaService = (quota) => Quota(quota).save();
 

@@ -10,6 +10,9 @@ export const adOferta = async (req, res) => {
         const id = req.params.id
         const membro = await findMembroService(id)
 
+        if(membro === null){
+            return res.status(400).send({message: 'Membro não achado!'})
+        }
         res.render('admin/adOferta', { membro })
     } catch (error) {
         res.status(500).send({ message: error.message })
@@ -30,7 +33,7 @@ export const adOfertaSave = async (req, res) => {
             res.render('admin/adOferta', { erros })
         } else {
             const membro = await findOfMembService(id, valor)
-            res.redirect('/membros')
+            res.redirect('/financas')
         }
     } catch (error) {
         res.status(500).send({ message: error.message })

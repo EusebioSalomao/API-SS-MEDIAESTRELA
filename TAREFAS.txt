@@ -1,0 +1,15 @@
+LOGAR
+    Esconder funcionalidades se não for admin
+
+Pag inicio
+    Fotos
+    Model de noticias
+    
+QUOTAS  
+    Detalhes de ofertas
+    Tratamento de erro quando não se preenche correctamente
+
+EDITAR Membros
+DELETAR membros
+
+Apload de foto

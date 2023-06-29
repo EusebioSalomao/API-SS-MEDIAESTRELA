@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">S. MÉDIA</a>
+  <a class="navbar-brand" href="/inicio">S. MÉDIA</a>
+  {{#if user}}
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -13,15 +14,18 @@
         <a class="nav-link" href="#">Notícias</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/financas">Finanças</a>
+        <a class="nav-link" href="/financas">Quotas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/membros">Membros</a>
       </li>
       
+      {{else}}
       <li class="nav-item">
-        <a class="nav-link disabled text-end" href="#" tabindex="-1" aria-disabled="true">Login</a>
+        <a class="nav-link disabled text-end" href="/auth/login" tabindex="-1" aria-disabled="true">Login</a>
       </li>
+
+      {{/if}}
       
     </ul>
     

@@ -1,0 +1,17 @@
+<h1>Lista de usuarios</h1>
+<hr>
+<a href="/user/add "><button class="btn btn-primary">Adicionar usuário</button></a>
+{{#each usuarios}}
+<div class="card mt-2">
+    <div class="card-body">
+        <div class="h3">{{username}}</div>
+            <p>{{telefone}}</p>
+            
+
+            <a href="/auth/detarUser/{{_id}}"><button class="btn btn-danger">Deletar</button></a>
+            <a href="/auth/editarUser"><button class="btn btn-primary">Editar</button></a>
+    </div>
+</div>
+{{else}}
+    <div class="h3">Nenhum usuário registrado</div>
+{{/each}}

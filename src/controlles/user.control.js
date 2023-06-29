@@ -1,52 +1,48 @@
 import mongoose from "mongoose"
 //require("../models/user.modles")
 import Usuario from '../models/user.modles.js'
-import {createService} from "../services/user.servece.js"
+import { createService } from "../services/user.servece.js"
 
 export const addUser = (req, res) => {
-    res.render("testes/user")
+    res.render("admin/user")
 }
 
 export const create = async (req, res) => {
-    //Verificar posteriormente os dados de entrada
-    const erros = []
-    if (!req.body.nome || typeof req.nome == undefined || req.body.nome == null) {
-        erros.push({ texto: 'Nome invalido' })
-    }
-    if (!req.body.usernome || typeof req.usernome == undefined || req.body.usernome == null) {
-        erros.push({ texto: 'Nome invalido' })
-    }
-    if (!req.body.senha || typeof req.senha == undefined || req.body.senha == null) {
-        erros.push({ texto: 'Nome invalido' })
-    }
-    if (!req.body.imagem || typeof req.imagem == undefined || req.body.imagem == null) {
-        erros.push({ texto: 'Nome invalido' })
-    }
-    if (!req.body.background || typeof req.background == undefined || req.body.background == null) {
-        erros.push({ texto: 'Nome invalido' })
-    }
-
-    if (erros.length > 0) {
-        res.status(400).send({ mensag: 'Preencha todos os Campos' })
-    } else {
-        const novoUsuario = {
-            nome: req.body.nome,
-            usernome: req.body.usernome,
-            email: req.body.email,
-            senha: req.body.senha,
-            imagem: req.body.imagem,
-            background: req.body.background
-        }
-        const usuario = await createService(novoUsuario)
-        if (!usuario) {
-            return res.status(400).send({ message: 'Erro a criar usuario' })
+    try {
+        //Verificar posteriormente os dados de entrada
+        const erros = []
+        console.log(req.body.username)
+        if (!req.body.username || typeof req.username == undefined || req.body.username == null) {
+            erros.push({ texto: 'O Nome de usuario invalido' })
         }
 
-        res.status(201).send({
-            mensage: 'Usuario criado com sucesso!', novoUsuario
-        })
+        if (!req.body.senha || typeof req.senha == undefined || req.body.senha == null) {
+            erros.push({ texto: 'senha invalida' })
+        }
+        if (req.body.senha != req.body.senha2) {
+            erros.push({ texto: 'As senhas não correspondem!' })
+        }
 
+
+        if (erros.length > 0) {
+            res.render('admin/user', {erros})
+        } else {
+            const novoUsuario = {
+                username: req.body.username,
+                telefone: req.body.telefone,
+                senha: req.body.senha
+            }
+            const usuario = await createService(novoUsuario)
+            if (!usuario) {
+                return res.status(400).send({ message: 'Erro ao criar usuario' })
+            }
+
+            res.status(201).redirect('/user/todos')
+        }
+    } catch (error) {
+        res.status(500).send({ message: error.message })
     }
+
 
     /**/
     /*
@@ -63,7 +59,7 @@ export const create = async (req, res) => {
 
 export const mostrarTodos = (req, res) => {
     Usuario.find().lean().then((usuarios) => {
-        res.send({ usuarios })
+        res.render('admin/tdUsers',{ usuarios })
     }).catch((erro) => {
         console.log("Erro ao listar todos usuarios!")
     })
